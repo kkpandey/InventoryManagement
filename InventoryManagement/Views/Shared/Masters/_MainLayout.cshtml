@@ -1,0 +1,45 @@
+﻿@{ 
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login", true);
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inventory Management System</title>
+    @Html.Partial("_headerScript")
+    @RenderSection("Styles", required: false)
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        @Html.Partial("_header")
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                @Html.Partial("_Userpanel")
+
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                @Html.Partial("_Menu")
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        @Html.Partial("_footer")
+
+    </div>
+    @Html.Partial("_footerScript")
+    @Html.Partial("_NotificationPanel")
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

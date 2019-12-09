@@ -1,0 +1,42 @@
+﻿
+.validation-summary-errors {
+}
+
+    .validation-summary-errors ul {
+        list-style: none;
+        padding: 0px;
+    }
+
+        .validation-summary-errors ul li {
+            color: #f00;
+            background-color: rgb(245, 226, 226);
+            /*padding:10px;*/
+            /*border: 1px solid;*/
+        }
+
+.field-validation-error {
+    color: #f00;
+    font-weight:bold;
+}
+
+.validation-summary-errors {
+    display: block;
+    /*background-color:#C27979;*/
+    color: #fafafa;
+    padding: 10px;
+}
+
+    .validation-summary-errors ul {
+        list-style: none;
+        padding: 0px;
+    }
+
+        .validation-summary-errors ul li:before {
+            display: inline-block;
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            content: "\f188";
+            padding-right: 5px;
+        }

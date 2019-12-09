@@ -1,0 +1,51 @@
+﻿@{
+    /**/
+
+    var UserMenusControls = ViewBag.UserMenus as InventoryManagement.Model.ViewModel.MenuContols;
+    var UserData = System.Web.HttpContext.Current.User as InventoryManagement.Model.CustomPrincipal;
+
+}
+
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header">MAIN NAVIGATION</li>
+    @{
+        if (UserMenusControls != null)
+        {
+            if (UserMenusControls.MenuModels != null)
+            {
+                foreach (var MainMenu in UserMenusControls.MenuModels)
+                {
+                    if (MainMenu.MenuName == "Dashboard")
+                    {
+
+                        <li class="treeview">
+                            <a href="@Url.Action("Index","Dashboard")">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="@MainMenu.MainCss"></i> <span>@MainMenu.MenuName</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                @foreach (var SubMenu in UserMenusControls.SubMenuModels.Where(x => x.MenuIndex == MainMenu.MenuIndex).OrderBy(x => x.SubMenuIndex))
+                                {
+                                    <li><a href="@Url.Action(SubMenu.Action, SubMenu.Controller, new { Area = "" })"><i class="fa fa-circle-o"></i>@SubMenu.SubMenuName</a></li>
+                                    
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+            }
+        }
+    }
+
+</ul>

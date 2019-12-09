@@ -1,0 +1,46 @@
+﻿@model InventoryManagement.Model.ViewModel.Role.RoleFormView
+@{
+
+}
+<!-- SELECT2 EXAMPLE -->
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Create Roles</h3>
+        <div class="box-tools pull-right">
+            <a href="@Url.Action("Index")" class="btn btn-circle btn-info" data-toggle="tooltip" title="Back"><span class="btn-circle"><i class="fa fa-reply-all"> </i></span></a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    @using (Html.BeginForm("CreateCountry", "Roles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.RoleName)
+                        @Html.TextBoxFor(x => x.RoleName, new { @class = "form-control", @placeholder = "Role Name" })
+                        @Html.ValidationMessageFor(x => x.RoleName)
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <div class="box-footer text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    }
+</div>
+@section Scripts {
+    <script>
+    $(function () {
+        $('#RoleGridViewData').DataTable()
+
+  });
+    </script>
+}

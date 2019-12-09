@@ -1,0 +1,100 @@
+﻿@model InventoryManagement.Model.ViewModel.Users.UsersFormView
+@{
+
+}
+<!-- SELECT2 EXAMPLE -->
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Updates Users</h3>
+        <div class="box-tools pull-right">
+            <a href="@Url.Action("Index")" class="btn btn-circle btn-info" data-toggle="tooltip" title="Back"><span class="btn-circle"><i class="fa fa-reply-all"> </i></span></a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    @using (Html.BeginForm("UpdateUsers", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.HiddenFor(x => x.UserId)
+
+                        @Html.LabelFor(x => x.UserName)
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "User Name" })
+                        @Html.ValidationMessageFor(x => x.UserName)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Password)
+                        @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password",@value=Model.Password})
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.RoleId)
+                        @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.RoleIdlst, "Value", "Text"), "Select Role", new { @class = "form-control select2" })
+                        @Html.ValidationMessageFor(x => x.RoleId)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.CompanyId)
+                        @Html.DropDownListFor(m => m.CompanyId, new SelectList(string.Empty, "Value", "Text"), "Select Company", new { @class = "form-control select2" })
+                        @Html.ValidationMessageFor(x => x.CompanyId)
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.FirstName)
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @placeholder = "First Name" })
+                        @Html.ValidationMessageFor(x => x.FirstName)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.LastName)
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(x => x.LastName)
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.EmailId)
+                        @Html.TextBoxFor(x => x.EmailId, new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(x => x.EmailId)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MobileNo)
+                        @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control", @placeholder = "Mobile No" })
+                        @Html.ValidationMessageFor(x => x.MobileNo)
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <div class="box-footer text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    }
+</div>
+@section Scripts {
+
+}

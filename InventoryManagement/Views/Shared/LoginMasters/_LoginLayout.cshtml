@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Panel</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    @Styles.Render("~/Content/bootstrapCss")
+    <!-- Font Awesome -->
+    @Styles.Render("~/Content/fontawesomeCss")
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/AdminLTE.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/plugins/iCheck/square/blue.css">
+    <link href="~/Content/CustomeCss.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
+    @RenderSection("Styles", required: false)
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Inventory System</b>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">Inventory management system</p>
+            @RenderBody()
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- jQuery 3 -->
+    @Scripts.Render("~/bundles/jquery")
+    <!-- Bootstrap 3.3.7 -->
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Content/plugins/iCheck/icheck.min.js"></script>
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

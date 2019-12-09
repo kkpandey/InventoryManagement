@@ -1,0 +1,47 @@
+﻿@model InventoryManagement.Model.ViewModel.LoginFormView
+@{
+    Layout = "~/Views/Shared/LoginMasters/_LoginLayout.cshtml";
+}
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { autocomplete = "off", id = "frmLogin" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @style = "color: red" })
+    <div class="form-group has-feedback">
+        @Html.LabelFor(x => x.UserName)
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "User Name" })
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        @Html.ValidationMessageFor(x => x.UserName)
+    </div>
+    <div class="form-group has-feedback">
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="checkbox icheck">
+                <label>
+                    <input type="checkbox"> Remember Me
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
+        </div>
+        <!-- /.col -->
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+}

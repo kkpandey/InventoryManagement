@@ -1,0 +1,66 @@
+﻿@model IEnumerable< InventoryManagement.Model.ViewModel.Users.UsersFormView>
+@{
+
+}
+
+<!-- SELECT2 EXAMPLE -->
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Users</h3>
+        <div class="box-tools pull-right">
+            <a href="@Url.Action("Create")" class="btn btn-circle btn-info" data-toggle="tooltip" title="Add Roles">
+                <span class="btn-circle">
+                    <i class="fa fa-plus"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box">
+        <div class="box-body">
+            <table id="UserGridViewData" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Img</th>
+                        <th>User Name</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Comopany</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Create Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        foreach (var item in Model)
+                        {
+                    <tr>
+                        <td></td>
+                        <td>@item.UserName</td>
+                        <td>@(item.FirstName + ' ' + item.LastName)</td>
+                        <td>@item.RoleName</td>
+                        <td></td>
+                        <td>@item.EmailId</td>
+                        <td>@item.MobileNo</td>
+                        <td>@item.CreateDate</td>
+                        <td><center><a href="@Url.Action("Edit",new {id=item.UserId })" class="editData"><i class="fa fa-pencil"></i></a></center></td>
+                    </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
+@section Scripts {
+    <script>
+    $(function () {
+        $('#UserGridViewData').DataTable()
+
+  });
+    </script>
+
+}
